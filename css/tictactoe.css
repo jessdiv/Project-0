@@ -1,0 +1,14 @@
+#game-container {
+  background-color: grey;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.box {
+  display: inline;
+  max-height: 2em;
+  max-width: 2em;
+  padding: 2em;
+  margin: 10px;
+  border: solid black 2px;
+}
