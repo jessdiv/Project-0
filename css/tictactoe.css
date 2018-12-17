@@ -1,14 +1,38 @@
-#game-container {
-  background-color: grey;
-  max-width: 960px;
-  margin: 0 auto;
+body {
+  background-color: #E0C1B3;
 }
 
+p {
+  font-family: monospace;
+}
+
+h1 {
+  font-family: monospace;
+  font-size: 40px;
+  text-align: center;
+  background-color: #D89A9E;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: 0 auto;
+  height: 60px;
+  line-height: 60px;
+
+}
+
+.box-container {
+  max-width: 450px;
+  margin: 50px auto 50px auto;
+  display: grid;
+  background-color: white;
+  grid-template-columns: 1fr 1fr 1fr;
+}
 .box {
-  display: inline;
-  max-height: 2em;
-  max-width: 2em;
-  padding: 2em;
-  margin: 10px;
-  border: solid black 2px;
+  background-color: #ccc;
+  border: 1px solid black;
+  font-size: 30px;
+  height: 150px;
+  width: 150px;
+  text-align: center;
 }
