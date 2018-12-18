@@ -11,9 +11,10 @@ let board = [null, null, null, null, null, null, null, null, null];
 
 // function to check ID against remaining choices
 
-const validMove = function (){
-  if (board[id] === 'X' || board[id] === 'O'){
+const validMove = function (boardId){
+  if (boardId === 'X' || boardId === 'O'){
     alert ('try another square');
+    return;
   } else {
     return true;
   }
@@ -39,13 +40,15 @@ $(document).ready(function(){
       console.log(`${ $(this).attr('id') }`);
       if (currentPlayer === 'X') {
         let id = $(this).attr('id');
-            board[id] = 'X';
-            $(this).text('X');
-            winner();
-            currentPlayer = 'O';
+          validMove(board[id])
+              board[id] = 'X';
+              $(this).text('X');
+              winner();
+              currentPlayer = 'O';
     } else if (currentPlayer === 'O'){
         let id = $(this).attr('id');
-        board[this.id] = 'O';
+        validMove(board[id]) 
+        board[id] = 'O';
         $(this).text('O');
         winner();
         console.log(board);
