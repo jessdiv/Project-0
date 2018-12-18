@@ -3,16 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="css/tictactoe.css">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="js/jquery.js"></script>
-  <script src="js/tictactoe2.js"></script>
+  <script src="js/tictactoe.js"></script>
   <title>TIC TAC TOE</title>
 </head>
 <body>
   <h1> TIC TAC TOE </h1>
-
+<div class='heading'>
   <h2> RULES </h2>
   <p> You know how to play.. </p>
+</div>
+  <div class='result'>
 
+  </div>
+<div class="playerscores">
+  <div class='score player1score'>
+    <p>Player 1: </p>
+  </div>
+
+  <div class='score player2score'>
+    <p>Player 2: </p>
+  </div>
+</div>
   <div class="box-container">
     <div id="0" class="box"> </div>
     <div id="1" class="box"> </div>
@@ -25,7 +38,7 @@
     <div id="8" class="box"> </div>
   </div>
 
-  <button class='reset'> RESET
+  <button id='reset'> RESET
     </button>
 
 </body>

@@ -1,5 +1,7 @@
 // set the origin of the board.
 
+
+
 const player1 = 'X';
 const player2 = 'O';
 let currentPlayer = player1;
@@ -47,9 +49,9 @@ let $move = $('.box'); // get the contents of a box
       if (boxHtml !== 'X' && boxHtml !== 'O'){ //checks if box
       if (currentPlayer === 'X') {
         board[id] = 'X';
-        $(this).text('X').hide().fadeIn(3000);
+        $(this).text('X').hide().fadeIn(1000);
          if (winner() === true) {
-           alert (`${winnerMessage}`);
+           alert (`${currentPlayer} wins!`);
            // break;
          } else {
            currentPlayer = 'O';
@@ -63,9 +65,9 @@ let $move = $('.box'); // get the contents of a box
        else if (currentPlayer === 'O'){
                let id = $(this).attr('id');
                  board[id] = 'O';
-                 $(this).text('O').hide().fadeIn(3000);
+                 $(this).text('O').hide().fadeIn(1000);
                  if (winner() === true) {
-                   alert (`${winnerMessage}`);
+                   alert (`${currentPlayer} wins!`);
                  } else {
                    currentPlayer = 'X';
                    moves++
@@ -75,7 +77,7 @@ let $move = $('.box'); // get the contents of a box
                  }
            }
          } else {
-           alert('pick another square');
+           swal ( "Pick another square!" )
          }
      }); //end of on click function
 
