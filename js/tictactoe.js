@@ -7,8 +7,8 @@ const game = {
   board: [null, null, null, null, null, null, null, null, null],
   moves: 0,
   player1score: 0,
-  player2score: 0,
-  endOfgame: false,
+  player2score: 0, //need reset to be able to track more than one game.
+  endOfgame: false, //haven't used this yet
   winner: function () {
     if (this.board[0] === 'X' && this.board[1] === 'X' && this.board[2] === 'X' || this.board[3] === 'X' && this.board[4] === 'X' && this.board[5] === 'X' || this.board[6] === 'X' && this.board[7] === 'X' && this.board[8] === 'X' || this.board[0] === 'X' && this.board[3] === 'X' && this.board[6] === 'X' || this.board[1] === 'X' && this.board[4] === 'X' && this.board[7] === 'X' || this.board[2] === 'X' && this.board[5] === 'X' && this.board[8] === 'X' || this.board[0] === 'X' && this.board[4] === 'X' && this.board[8] === 'X' || this.board[2] === 'X' && this.board[4] === 'X' && this.board[6] === 'X' || this.board[0] === 'O' && this.board[1] === 'O' && this.board[2] === 'O' || this.board[3] === 'O' && this.board[4] === 'O' && this.board[5] === 'O' || this.board[6] === 'O' && this.board[7] === 'O' && this.board[8] === 'O' || this.board[0] === 'O' && this.board[3] === 'O' && this.board[6] === 'O' || this.board[1] === 'O' && this.board[4] === 'O' && this.board[7] === 'O' || this.board[2] === 'O' && this.board[5] === 'O' && this.board[8] === 'O' || this.board[0] === 'O' && this.board[4] === 'O' && this.board[8] === 'O' || this.board[2] === 'O' && this.board[4] === 'O' && this.board[6] === 'O') {
       return true;
@@ -19,9 +19,10 @@ const game = {
     this.board = [null, null, null, null, null, null, null, null, null];
     this.moves = 0;
     this.currentPlayer = 'player1';
-    this.endOfgame = false;
   },
 }
+
+// messages
 
 $(document).ready(function(){
 
@@ -32,13 +33,13 @@ let $move = $('.box'); // get the contents of a box
       // console.log(this.$move.innerHTML);
       let boxHtml = document.getElementById(id).innerHTML;
       if (boxHtml !== 'X' && boxHtml !== 'O'){ //checks if box has already been clicked in the game.
-      if (game.currentPlayer === 'player1') {
+      if (game.currentPlayer === 'player1') { //checks who the current player is
         game.board[id] = 'X';
         $(this).text('X').hide().fadeIn(1000);
-         if (game.winner() === true) {
+         if (game.winner() === true) { //checks if move is a winner
            $('.result').html(`X wins!`);
            game.player1score++;
-           $('.player1score').append(`${game.player1score}`);
+           $('.player1score').append(`<p>${game.player1score}</p>`);
            // break;
          } else {
            game.moves++;
@@ -71,10 +72,11 @@ let $move = $('.box'); // get the contents of a box
 
      //reset
 
-  const reset = $('#reset');
-  $(reset).on('click', function(){
+  $('#reset').on('click', function(){
     game.resetGame();
-  })
+    $('.result').html("");
+    $('.box').html("");
+  });
 
 
 

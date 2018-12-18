@@ -31,8 +31,12 @@ h2 {
   margin: 0 auto;
 }
 
+.heading p {
+  font-family: monospace;
+}
 
-p {
+
+.score p {
   font-family: monospace;
   text-align: center;
 }
