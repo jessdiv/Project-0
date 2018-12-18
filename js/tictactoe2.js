@@ -5,37 +5,25 @@ const player2 = 'O';
 let currentPlayer = player1;
 let choicesLeft = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 let board = [null, null, null, null, null, null, null, null, null];
-// set the winning combo's
-
 
 // function to switch the player
+    //not necessary anymore as I have just assigned it.
 
-const switchPlayer = function () {
-  
-}
 // function to check ID against remaining choices
 
-const validMove = function (id){
-  if (this.id === 'X' || this.id === 'O'){
-    return false;
+const validMove = function (){
+  if (board[id] === 'X' || board[id] === 'O'){
+    alert ('try another square');
   } else {
     return true;
   }
 }
 
-//compares the array formed to the winning arrays.
+//possible wins
 
-const winner = function (play) {
-  const win =[[1, 2, 3],[4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]];
-
-
-  let play = play.sort();
-  for ( let i = 0; i < play.length; i ++){
-    if (play.includes[win[i]]){
-      return 'winner';
-    } else {
-      return false;
-    }
+const winner = function () {
+  if (board[0] === 'X' && board[1] === 'X' && board[2] === 'X' || board[3] === 'X' && board[4] === 'X' && board[5] === 'X' || board[6] === 'X' && board[7] === 'X' && board[8] === 'X' || board[0] === 'X' && board[3] === 'X' && board[6] === 'X' || board[1] === 'X' && board[4] === 'X' && board[7] === 'X' || board[2] === 'X' && board[5] === 'X' && board[8] === 'X' || board[0] === 'X' && board[4] === 'X' && board[8] === 'X' || board[2] === 'X' && board[4] === 'X' && board[6] === 'X' || board[0] === 'O' && board[1] === 'O' && board[2] === 'O' || board[3] === 'O' && board[4] === 'O' && board[5] === 'O' || board[6] === 'O' && board[7] === 'O' && board[8] === 'O' || board[0] === 'O' && board[3] === 'O' && board[6] === 'O' || board[1] === 'O' && board[4] === 'O' && board[7] === 'O' || board[2] === 'O' && board[5] === 'O' && board[8] === 'O' || board[0] === 'O' && board[4] === 'O' && board[8] === 'O' || board[2] === 'O' && board[4] === 'O' && board[6] === 'O') {
+    alert (`${currentPlayer} wins!`);
   }
 }
 
@@ -53,33 +41,19 @@ $(document).ready(function(){
         let id = $(this).attr('id');
             board[id] = 'X';
             $(this).text('X');
-            console.log(board);
+            winner();
             currentPlayer = 'O';
-    } else {
+    } else if (currentPlayer === 'O'){
         let id = $(this).attr('id');
         board[this.id] = 'O';
         $(this).text('O');
+        winner();
         console.log(board);
         currentPlayer = 'X';
     }
   })
 
-
-
-
-
-  // if (currentPlayer === 'O' ){
-  //   $click.on('click', function(){
-  //     play2.push(this.id);
-  //     console.log(play2);
-  //     console.log('O');
-  //     switchPlayer(currentPlayer)
-  //   })
-  //  }
-  // }
-
-//once you click, if the currentPlayer is X, get th ID and push to board.
-
+//once you click, get th ID and push current player to board.
 
 
 }); //doc ready end
