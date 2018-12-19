@@ -65,6 +65,7 @@ h2 {
   max-width: 450px;
   margin: 0 auto;
   display: block;
+  font-family: monospace; 
 }
 
 .score {

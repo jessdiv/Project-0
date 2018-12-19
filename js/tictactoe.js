@@ -9,7 +9,7 @@ const game = {
   message: "",
   player1score: 0,
   player2score: 0, //need reset to be able to track more than one game.
-  endOfgame: false, //haven't used this yet
+  endOfGame: false, //haven't used this yet
   winner: function () {
     if (this.board[0] === 'X' && this.board[1] === 'X' && this.board[2] === 'X' || this.board[3] === 'X' && this.board[4] === 'X' && this.board[5] === 'X' || this.board[6] === 'X' && this.board[7] === 'X' && this.board[8] === 'X' || this.board[0] === 'X' && this.board[3] === 'X' && this.board[6] === 'X' || this.board[1] === 'X' && this.board[4] === 'X' && this.board[7] === 'X' || this.board[2] === 'X' && this.board[5] === 'X' && this.board[8] === 'X' || this.board[0] === 'X' && this.board[4] === 'X' && this.board[8] === 'X' || this.board[2] === 'X' && this.board[4] === 'X' && this.board[6] === 'X' || this.board[0] === 'O' && this.board[1] === 'O' && this.board[2] === 'O' || this.board[3] === 'O' && this.board[4] === 'O' && this.board[5] === 'O' || this.board[6] === 'O' && this.board[7] === 'O' && this.board[8] === 'O' || this.board[0] === 'O' && this.board[3] === 'O' && this.board[6] === 'O' || this.board[1] === 'O' && this.board[4] === 'O' && this.board[7] === 'O' || this.board[2] === 'O' && this.board[5] === 'O' && this.board[8] === 'O' || this.board[0] === 'O' && this.board[4] === 'O' && this.board[8] === 'O' || this.board[2] === 'O' && this.board[4] === 'O' && this.board[6] === 'O') {
       return true;
@@ -26,6 +26,7 @@ const game = {
     this.board = [null, null, null, null, null, null, null, null, null];
     this.moves = 0;
     this.currentPlayer = 'player1';
+    this.endOfGame = false;
   },
   resetCount: function () {
     this.player1score = 0;
@@ -37,20 +38,20 @@ const game = {
 
 $(document).ready(function(){
 
-const winningMessage = `${game.currentPlayer} wins the round!`;
-const drawMessage = `It's a draw!`;
-const invalidMove = `Pick another square`;
-
+// const winningMessage = `${game.currentPlayer} wins the round!`;
+// const drawMessage = `It's a draw!`;
+// const invalidMove = `Pick another square`;
 
     $('.box').on('click', function(){ // get the contents of a box, checks for click.
       let id = $(this).attr('id');
-      if (game.board[id] !=='X' && game.board[id] !== 'O') { // checking if board id already has an X or O.
+      if (game.board[id] !=='X' && game.board[id] !== 'O' && game.endOfGame === false) { // checking if board id already has an X or O.
       if (game.checkPlayer()) { //checks who the current player is
         game.board[id] = 'X';
         $(this).text('X').hide().fadeIn(200);
          if (game.winner() === true) { //checks if move is a winner
            game.player1score++;
            $('.player1score').html(`<p>Player 1: ${game.player1score}</p>`);
+           game.endOfGame = true;
            if (game.player1score === 3){
              $('.result').html(`X wins the game!`);
            } else {
@@ -71,6 +72,7 @@ const invalidMove = `Pick another square`;
                    $('.result').html(` O wins the round!`);
                    game.player2score++;
                    $('.player2score').html(`<p>Player 2: ${game.player2score}<p>`);
+                   game.endOfGame = true;
                    if (game.player2score === 3){
                      $('.result').html('O wins the game!');
                    } else {
