@@ -51,7 +51,7 @@ h2 {
   background-color: yellow;
 }
 
-.result {
+/* .result {
   height: 50px;
   line-height: 50px;
   max-width: 500px;
@@ -59,13 +59,13 @@ h2 {
   font-family: monospace;
   font-size: 18px;
   text-align: center;
-}
+} */
 
 .playerscores {
   max-width: 450px;
   margin: 0 auto;
   display: block;
-  font-family: monospace; 
+  font-family: monospace;
 }
 
 .score {
@@ -114,11 +114,14 @@ button {
   /* border: solid black 2px; */
   border-radius: 15px;
   position: absolute;
-  left: 250px;
+  left: 255px;
   top: 125px;
   width: 304px;
   height: 120px;
   background-color: rgba(0, 0, 0, 0.5);
-  opacity: 50%;
-  visibility: hidden;
+  color: white;
+  text-align: center;
+  font-family: monospace;
+  font-size: 18px;
+  line-height: 60px;
 }

@@ -37,7 +37,7 @@ const game = {
 // messages
 
 $(document).ready(function(){
-
+  $('.messageBox').hide();
 // const winningMessage = `${game.currentPlayer} wins the round!`;
 // const drawMessage = `It's a draw!`;
 // const invalidMove = `Pick another square`;
@@ -50,12 +50,12 @@ $(document).ready(function(){
         $(this).text('X').hide().fadeIn(200);
          if (game.winner() === true) { //checks if move is a winner
            game.player1score++;
-           $('.player1score').html(`<p>Player 1: ${game.player1score}</p>`);
+           $('.player1score').html(`<p>X: ${game.player1score}</p>`);
            game.endOfGame = true;
            if (game.player1score === 3){
-             $('.result').html(`X wins the game!`);
+              $('.messageBox').html(` X wins the game!`).hide().slideDown(500);
            } else {
-             $('.result').html(`X wins the round!`);
+              $('.messageBox').html(` X wins the round!`).hide().slideDown(500).delay(1000).slideUp(500);
            }
          } else {
            game.moves++;
@@ -69,20 +69,19 @@ $(document).ready(function(){
                  game.board[id] = 'O';
                  $(this).text('O').hide().fadeIn(200);
                  if (game.winner() === true) {
-                   $('.result').html(` O wins the round!`);
                    game.player2score++;
-                   $('.player2score').html(`<p>Player 2: ${game.player2score}<p>`);
+                   $('.player2score').html(`<p>O: ${game.player2score}<p>`);
                    game.endOfGame = true;
                    if (game.player2score === 3){
-                     $('.result').html('O wins the game!');
+                      $('.messageBox').html(` O wins the game!`).hide().slideDown(500);
                    } else {
-                     $('.result').html(`O wins the round!`);
+                      $('.messageBox').html(` O wins the round!`).hide().slideDown(500).delay(1000).slideUp(500);
                    }
                  } else {
                    game.currentPlayer = 'player1';
                    game.moves++;
                    if (game.moves === 9) {
-                     $('.result').html('<p>It\'s a draw!</p>');
+                     $('.messagebox').html('<p>It\'s a draw!</p>');
                    }
                  }
            }
@@ -91,7 +90,7 @@ $(document).ready(function(){
          }
      }); //end of on click function
 
-     //reset
+//reset
 
   $('#reset').on('click', function(){
     game.resetGame();
@@ -109,3 +108,18 @@ $(document).ready(function(){
 
 
 }); //doc ready end
+
+
+
+//working on
+
+if (game.winner() === true) { //checks if move is a winner
+  game.player1score++;
+  $('.player1score').html(`<p>Player 1: ${game.player1score}</p>`);
+  game.endOfGame = true;
+  if (game.player1score === 3){
+    $('.result').html(`X wins the game!`);
+  } else {
+    $('.result').html(`X wins the round!`);
+  }
+}
