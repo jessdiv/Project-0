@@ -16,12 +16,15 @@ h1 {
   margin: 0 auto;
   height: 60px;
   line-height: 60px;
+  z-index: 100;
 
 }
 
 .heading {
   display: block;
   margin-top: 60px;
+  padding-top: 3em;
+  padding-left: 3em;
 }
 
 h2 {
@@ -38,13 +41,20 @@ h2 {
 
 .score p {
   font-family: monospace;
-  text-align: center;
+  font-size: 15px;
+  width: 225px;
+}
+
+.draw {
+  height: 50px;
+  width: 80px;
+  background-color: yellow;
 }
 
 .result {
   height: 50px;
   line-height: 50px;
-  max-width: 100px;
+  max-width: 500px;
   margin: 0 auto;
   font-family: monospace;
   font-size: 18px;
@@ -62,12 +72,20 @@ h2 {
   width: 45%;
 }
 
+button {
+  height: 40px;
+  width: 100px;
+  font-size: 18px;
+  display: inline-block;
+}
+
 .box-container {
-  max-width: 450px;
-  margin: 50px auto 50px auto;
+  max-width: 458px;
+  margin: 0 auto;
   display: grid;
-  background-color: white;
+  background-color: #EAEAE8;
   grid-template-columns: 1fr 1fr 1fr;
+
 }
 .box {
   background-color: #ccc;
@@ -78,12 +96,28 @@ h2 {
   height: 150px;
   width: 150px;
   text-align: center;
+  border-radius: 20px;
+  margin: 2px;
 }
 
-button {
-  height: 40px;
-  width: 100px;
-  font-size: 18px;
-  max-width: 500px;
+.game {
+  max-width: 800px;
   margin: 0 auto;
+}
+
+.box-message {
+  position: relative;
+}
+
+.messageBox {
+  /* border: solid black 2px; */
+  border-radius: 15px;
+  position: absolute;
+  left: 250px;
+  top: 125px;
+  width: 304px;
+  height: 120px;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 50%;
+  visibility: hidden;
 }

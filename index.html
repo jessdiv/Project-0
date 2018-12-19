@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="css/tictactoe.css">
+<script src="js/shake.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
   <script src="js/jquery.js"></script>
   <script src="js/tictactoe.js"></script>
   <title>TIC TAC TOE</title>
@@ -19,13 +21,17 @@
   </div>
 <div class="playerscores">
   <div class='score player1score'>
-    <p>Player 1: </p>
+    <p>Player 1: 0</p>
   </div>
 
   <div class='score player2score'>
-    <p>Player 2: </p>
+    <p>Player 2: 0</p>
   </div>
 </div>
+<div class='game'>
+  <button id='reset'> <i class="fas fa-redo"></i>
+    </button>
+    <div class='box-message'>
   <div class="box-container">
     <div id="0" class="box"> </div>
     <div id="1" class="box"> </div>
@@ -38,8 +44,14 @@
     <div id="8" class="box"> </div>
   </div>
 
-  <button id='reset'> RESET
-    </button>
+  <div class='messageBox'>
+    <p> Messages will go here </p>
+  </div>
+</div>
+  <div class'winningLine'>
 
+  </div>
+
+</div> <!-- end of game and button -->
 </body>
 </html>

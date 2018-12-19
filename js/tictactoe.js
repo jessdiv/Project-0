@@ -6,6 +6,7 @@ const game = {
   currentPlayer: 'player1',
   board: [null, null, null, null, null, null, null, null, null],
   moves: 0,
+  message: "",
   player1score: 0,
   player2score: 0, //need reset to be able to track more than one game.
   endOfgame: false, //haven't used this yet
@@ -15,48 +16,66 @@ const game = {
     }
     return false;
   },
+  checkPlayer: function (){
+    if (game.currentPlayer === 'player1'){
+      return true;
+    }
+    return false;
+  },
   resetGame: function() {
     this.board = [null, null, null, null, null, null, null, null, null];
     this.moves = 0;
     this.currentPlayer = 'player1';
   },
+  resetCount: function () {
+    this.player1score = 0;
+    this.player2score = 0;
+  }
 }
 
 // messages
 
 $(document).ready(function(){
 
-let $move = $('.box'); // get the contents of a box
-  // contains X or O already. (validity).
-    $move.on('click', function(){
+const winningMessage = `${game.currentPlayer} wins the round!`;
+const drawMessage = `It's a draw!`;
+const invalidMove = `Pick another square`;
+
+
+    $('.box').on('click', function(){ // get the contents of a box, checks for click.
       let id = $(this).attr('id');
-      // console.log(this.$move.innerHTML);
-      let boxHtml = document.getElementById(id).innerHTML;
-      if (boxHtml !== 'X' && boxHtml !== 'O'){ //checks if box has already been clicked in the game.
-      if (game.currentPlayer === 'player1') { //checks who the current player is
+      if (game.board[id] !=='X' && game.board[id] !== 'O') { // checking if board id already has an X or O.
+      if (game.checkPlayer()) { //checks who the current player is
         game.board[id] = 'X';
-        $(this).text('X').hide().fadeIn(1000);
+        $(this).text('X').hide().fadeIn(200);
          if (game.winner() === true) { //checks if move is a winner
-           $('.result').html(`X wins!`);
            game.player1score++;
-           $('.player1score').append(`<p>${game.player1score}</p>`);
-           // break;
+           $('.player1score').html(`<p>Player 1: ${game.player1score}</p>`);
+           if (game.player1score === 3){
+             $('.result').html(`X wins the game!`);
+           } else {
+             $('.result').html(`X wins the round!`);
+           }
          } else {
            game.moves++;
-        if (game.moves === 0) {
+        if (game.moves === 9) {
              $('.result').html(`It\'s a draw!`);
            }
          } //end of winner statement
          game.currentPlayer = 'player2';
        } //end of currentPlayer 'X' statement.
-       else if (game.currentPlayer === 'player2'){
-               let id = $(this).attr('id');
+       else if (!game.checkPlayer()){
                  game.board[id] = 'O';
-                 $(this).text('O').hide().fadeIn(1000);
+                 $(this).text('O').hide().fadeIn(200);
                  if (game.winner() === true) {
-                   $('.result').html(` O wins!`);
+                   $('.result').html(` O wins the round!`);
                    game.player2score++;
-                   $('.player2score').append(`${game.player2score}`);
+                   $('.player2score').html(`<p>Player 2: ${game.player2score}<p>`);
+                   if (game.player2score === 3){
+                     $('.result').html('O wins the game!');
+                   } else {
+                     $('.result').html(`O wins the round!`);
+                   }
                  } else {
                    game.currentPlayer = 'player1';
                    game.moves++;
@@ -66,7 +85,7 @@ let $move = $('.box'); // get the contents of a box
                  }
            }
          } else {
-           swal ( "Pick another square!" )
+           shake(this);
          }
      }); //end of on click function
 
@@ -76,6 +95,12 @@ let $move = $('.box'); // get the contents of a box
     game.resetGame();
     $('.result').html("");
     $('.box').html("");
+    if (game.player1score === 3 || game.player2score === 3){
+      game.resetCount();
+      $('.player1score').html(`<p>Player 1: ${game.player2score}<p>`)
+      $('.player2score').html(`<p>Player 2: ${game.player2score}<p>`);
+
+    }
   });
 
 
