@@ -13,27 +13,37 @@
 </head>
 
 <body>
-  <h1> TIC TAC TOE </h1>
+  <div class='entiregame'>
+  <h1>TIC TAC TOE </h1>
 <div class='heading'>
+  <div class='rules'>
   <h2> RULES </h2>
-  <p> You know how to play.. </p>
+  <p> FIRST TO 3.</p>
+  <p> X STARTS.</p>
+  <p> REFRESH AFTER EACH ROUND.</p>
 </div>
+  <div class="playerscores">
+    <h3><p> SCORES </p></h3>
+    <div class="scores">
+    <span class='score player1score'>
+      <p>X: 0</p>
+    </span>
+    <span class='score draw'>
+      <p>Draws: 0</p>
+    </span>
+    <span class='score player2score'>
+      <p>O: 0</p>
+    </span>
+  </div> <!-- end of scores -->
+</div> <!--end of playerscores -->
+</div> <!--end of heading-->
 
 
-<div class="playerscores">
-  <p> SCORES </p>
-  <div class='score player1score'>
-    <p>X: 0</p>
-  </div>
-  <div class='score player2score'>
-    <p>O: 0</p>
-  </div>
-</div>
+
 
 
 <div class='game'>
-  <button id='reset'> <i class="fas fa-redo"></i>
-    </button>
+  <button id='reset'> <i class="fas fa-redo"></i>  </button>
     <div class='box-message'>
   <div class="box-container">
     <div id="0" class="box"> </div>
@@ -51,9 +61,11 @@
     <p>  </p>
   </div>
 </div>
-
-  <div class'winningLine'></div>
+</div>
 
 </div> <!-- end of game and button -->
+<footer>
+  <p>Website by Jessica Diver 2018.</p>
+</footer>
 </body>
 </html>
