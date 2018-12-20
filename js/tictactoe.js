@@ -40,7 +40,7 @@ const game = {
 
 $(document).ready(function(){
   $('.messageBox').hide();
-  
+
 // const winningMessage = `${game.currentPlayer} wins the round!`;
 // const drawMessage = `It's a draw!`;
 // const invalidMove = `Pick another square`;
@@ -95,7 +95,7 @@ $(document).ready(function(){
                    game.moves++;
                    if (game.moves === 9) {
                     game.draw++;
-                    $('.draw').html(`<p>Draw: ${game.draw}<p>`);
+                    $('.draw').html(`<p>Draw: ${game.draw}</p>`);
                      $('.messageBox').html(` It\'s a draw!`).hide().slideDown(500);
                    }
                  }
