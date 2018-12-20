@@ -32,6 +32,7 @@ const game = {
   resetCount: function () {
     this.player1score = 0;
     this.player2score = 0;
+
   }
 }
 
@@ -39,11 +40,13 @@ const game = {
 
 $(document).ready(function(){
   $('.messageBox').hide();
+  
 // const winningMessage = `${game.currentPlayer} wins the round!`;
 // const drawMessage = `It's a draw!`;
 // const invalidMove = `Pick another square`;
 
     $('.box').on('click', function(){ // get the contents of a box, checks for click.
+      $('.messageBox').removeClass('messageBox-winner');
       let id = $(this).attr('id');
       if (game.board[id] !=='X' && game.board[id] !== 'O' && game.endOfGame === false) { // checking if board id already has an X or O.
       if (game.checkPlayer()) { //checks who the current player is
@@ -56,14 +59,16 @@ $(document).ready(function(){
            game.endOfGame = true;
            if (game.player1score === 3){
               $('.messageBox').html(` X WINS THE GAME!`).hide().slideDown(500);
+              $('.messageBox').addClass('messageBox-winner');
            } else {
               $('.messageBox').html(` X wins the round!`).hide().slideDown(500);
+
            }
          } else {
            game.moves++;
         if (game.moves === 9) {
             game.draw++;
-            $('.draw').html(`<p>Draw: ${game.draw}<p>`);
+            $('.draw').html(`<p>Draw: ${game.draw}</p>`);
              $('.messageBox').html(` It\'s a draw!`).hide().slideDown(500);
            }
          } //end of winner statement
@@ -75,7 +80,7 @@ $(document).ready(function(){
                  $(this).text('O').hide().fadeIn(200);
                  if (game.winner() === true) {
                    game.player2score++;
-                   $('.player2score').html(`<p>O: ${game.player2score}<p>`);
+                   $('.player2score').html(`<p>O: ${game.player2score}</p>`);
                    game.endOfGame = true;
                    if (game.player2score === 3){
                       $('.messageBox').html(` O WINS THE GAME!`).hide().slideDown(500);
@@ -109,8 +114,8 @@ $(document).ready(function(){
     $('.box').html("");
     if (game.player1score === 3 || game.player2score === 3){
       game.resetCount();
-      $('.player1score').html(`<p>X: ${game.player2score}<p>`)
-      $('.player2score').html(`<p>O: ${game.player2score}<p>`);
+      $('.player1score').html(`<p>X: ${game.player2score}</p>`)
+      $('.player2score').html(`<p>O: ${game.player2score}</p>`);
     }
   });
 
