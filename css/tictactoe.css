@@ -6,6 +6,7 @@ font-family: 'Comfortaa', cursive; */
 
 body {
   background-color: #EAEAE8;
+  color: #fff;
   font-family: 'Cutive Mono', monospace;
 }
 
@@ -102,7 +103,7 @@ button {
 
 .buttons {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
  max-width: 455px;
  margin: 0 auto;
  text-align: center;
@@ -185,7 +186,6 @@ cursor: pointer;
 /* backgroud animation */
 
 body {
-	color: #fff;
 	background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
 	background-size: 400% 400%;
 	-webkit-animation: Gradient 60s ease infinite;
