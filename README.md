@@ -1,24 +1,18 @@
-# Project 0
+# **Project 0**
 
-Tic Tac Toe
+Tic Tac Toe game.
 
-https://jessdiv.github.io/Project-0/
+Can be viewed here: https://jessdiv.github.io/Project-0/
 
-## Task
+![Screenshot](tictactoescreenshot.png)
 
-Technical Requirements
+## Clone
 
-Your app must:
+Clone this repo to your local machine using:
 
-- Render a game board in the browser
-- Switch turns between X and O (or whichever markers you select)
-- Visually display which side won if a player gets three in a row or show a draw/"cat’s game" if neither wins
-- Include separate HTML / CSS / JavaScript files
-- Stick with KISS (Keep It Simple Stupid) and DRY (Don't Repeat Yourself) principles
-- Use Javascript for DOM manipulation
-- Deploy your game online, where the rest of the world can access it
-- Use semantic markup for HTML and CSS (adhere to best practices)
-
+```
+$ git clone https://github.com/jessdiv/Project-0.git
+```
 
 ## Tools
 
@@ -30,7 +24,7 @@ HTML, CSS, Javascript, Jquery.
 
 - Icon: https://fontawesome.com/
 
-## Approach
+<!-- ## Approach
 
 I found this project quite difficult to get started on but once I broke it down into smaller chunks It became a lot easier to manage. Here's how I did it.
 
@@ -54,17 +48,17 @@ I found this project quite difficult to get started on but once I broke it down 
 
 There were definitely some challenges throughout this project. I found it difficult to get 'pen to paper' initially. Once I started to get my head around the game logic, it all started to flow.
 
-I faced a few problems with my CSS and how to position things where I wanted. I did some extra reading on this and identify it as something I'd like to improve on!!
+I faced a few problems with my CSS and how to position things where I wanted. I did some extra reading on this and identify it as something I'd like to improve on! -->
 
 ## Next Steps
 
-I'd love to continue working on this project over the coming weeks as there are more features I'd like to add. Some I have already started looking at but have not completed yet.
+Add the following:
 
-1. Ability to choose different icons.
-2. Support networked multiplayer.
-3. Custom board sizes.
-4. Sound effects.
+1. Support networked multiplayer.
+2. Custom board sizes.
+3. Sound effects/music.
+4. Improve User Experience.
 
-Aside from new features, I'd like to also take a closer look at the code I've written and refactor it. I think it can be simplified to make it easier to add features.  
+<!-- Aside from new features, I'd like to also take a closer look at the code I've written and refactor it. I think it can be simplified to make it easier to add features.  
 
-A few of the comments I had in testing were to do with usability. I think there could be some improvements there too!
+A few of the comments I had in testing were to do with usability. I think there could be some improvements there too! -->

@@ -48,17 +48,14 @@ h3 {
 .scores {
   max-width: 450px;
   margin: 0 auto;
-}
-
-.scores span {
-  width: 150px;
-}
-
-.scores {
   width: 454px;
   text-align: center;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+}
+
+.scores span {
+  width: 150px;
 }
 
 .scores p {
@@ -95,11 +92,10 @@ button {
   cursor: pointer;
 }
 
-#icons:hover {
+/* #icons:hover {
   opacity: 0.90;
   cursor: pointer;
-}
-
+} */
 
 .buttons {
   display: grid;
@@ -218,4 +214,14 @@ footer p {
   padding-top: 30px;
   font-size: 15px;
   text-align: center;
+}
+
+.attribution-block {
+  font-family: 'Abril Fatface', cursive;
+  font-size: 15px;
+  text-align: center;
+}
+
+.attribution-block a {
+  text-decoration: none;
 }
