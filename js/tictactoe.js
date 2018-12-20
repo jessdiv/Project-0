@@ -40,7 +40,6 @@ const game = {
 
 $(document).ready(function(){
   $('.messageBox').hide();
-
 // const winningMessage = `${game.currentPlayer} wins the round!`;
 // const drawMessage = `It's a draw!`;
 // const invalidMove = `Pick another square`;
@@ -51,18 +50,16 @@ $(document).ready(function(){
       if (game.board[id] !=='X' && game.board[id] !== 'O' && game.endOfGame === false) { // checking if board id already has an X or O.
       if (game.checkPlayer()) { //checks who the current player is
         game.board[id] = 'X';
-        $(this).css({ });
         $(this).text('X').hide().fadeIn(200);
          if (game.winner() === true) { //checks if move is a winner
            game.player1score++;
            $('.player1score').html(`<p>X: ${game.player1score}</p>`);
            game.endOfGame = true;
            if (game.player1score === 3){
-              $('.messageBox').html(` X WINS THE GAME!`).hide().slideDown(500);
+              $('.messageBox').html(`  X WINS THE GAME!`).hide().slideDown(500);
               $('.messageBox').addClass('messageBox-winner');
            } else {
               $('.messageBox').html(` X wins the round!`).hide().slideDown(500);
-
            }
          } else {
            game.moves++;
@@ -76,7 +73,6 @@ $(document).ready(function(){
        } //end of currentPlayer 'X' statement.
        else if (!game.checkPlayer()){
                  game.board[id] = 'O';
-                 // $(this).css({'opacity': '0.5'});
                  $(this).text('O').hide().fadeIn(200);
                  if (game.winner() === true) {
                    game.player2score++;
@@ -119,8 +115,31 @@ $(document).ready(function(){
     }
   });
 
+  // custom buttons
 
+  $('#icons').on('click', function (){
+    console.log('hello');
+  })
 
+//sound effects
+
+ion.sound({
+    sounds: [
+        {name: "button_click_on"},
+        {name: "button_tiny"},
+        {name: "computer_error"},
+        {name: "door_bump"}
+    ],
+
+    // main config
+    path: "sounds/",
+    preload: true,
+    multiplay: true,
+    volume: 0.9
+});
+
+// play sound
+ion.sound.play("door_bump");
 
 }); //doc ready end
 

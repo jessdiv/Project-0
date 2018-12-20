@@ -48,32 +48,12 @@ h3 {
   width: 150px;
 }
 
- {
-color: black;
-}
-
-/* .heading {
-  display: inline-block;
-  margin-top: 60px;
-  padding-top: 3em;
-  padding-left: 3em;
-  position: relative;
-} */
-
-h2 {
-
-
-}
-
-.heading p {
-}
 .scores {
   width: 454px;
   text-align: center;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
-
 
 .scores p {
   display: inline-block;
@@ -106,13 +86,15 @@ button {
   font-family: 'Cutive Mono', monospace;
   background-color: #3A405A;
   color: white;
-
+  box-shadow: 2px 2px rgba(100, 100, 100, 0.4);
 }
 
+#reset:hover {
+  opacity: 0.95;
+  cursor: pointer;
+}
 
 .buttons {
- display: grid;
- grid-template-columns: 1fr 1fr;
  max-width: 455px;
  margin: 0 auto;
  text-align: center;
@@ -173,12 +155,12 @@ cursor: pointer;
   color: white;
   text-align: center;
   font-weight: bold;
-  line-height: 75px;
+  line-height: 100px;
   text-transform: uppercase;
   background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
 	background-size: 400% 400%;
-	-webkit-animation: Gradient 1s ease infinite;
-	animation: Gradient 1s ease infinite;
+	-webkit-animation: Gradient 0.3s ease infinite;
+	animation: Gradient 0.3s ease infinite;
 }
 
 @-webkit-keyframes Gradient {
@@ -196,10 +178,10 @@ cursor: pointer;
 
 body {
 	color: #fff;
-	background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+	background: linear-gradient(-360deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
 	background-size: 400% 400%;
-	-webkit-animation: Gradient 45s ease infinite;
-	animation: Gradient 45s ease infinite;
+	-webkit-animation: Gradient 60s ease infinite;
+	animation: Gradient 60s ease infinite;
 }
 
 @-webkit-keyframes Gradient {
