@@ -9,8 +9,10 @@ const game = {
   message: "",
   player1score: 0,
   player2score: 0, //need reset to be able to track more than one game.
+  player1token: 'X',
+  player2token: 'O',
   draw: 0,
-  endOfGame: false, //haven't used this yet
+  endOfGame: false, //used to disable clicks after the game has ended.
   winner: function () {
     if (this.board[0] === 'X' && this.board[1] === 'X' && this.board[2] === 'X' || this.board[3] === 'X' && this.board[4] === 'X' && this.board[5] === 'X' || this.board[6] === 'X' && this.board[7] === 'X' && this.board[8] === 'X' || this.board[0] === 'X' && this.board[3] === 'X' && this.board[6] === 'X' || this.board[1] === 'X' && this.board[4] === 'X' && this.board[7] === 'X' || this.board[2] === 'X' && this.board[5] === 'X' && this.board[8] === 'X' || this.board[0] === 'X' && this.board[4] === 'X' && this.board[8] === 'X' || this.board[2] === 'X' && this.board[4] === 'X' && this.board[6] === 'X' || this.board[0] === 'O' && this.board[1] === 'O' && this.board[2] === 'O' || this.board[3] === 'O' && this.board[4] === 'O' && this.board[5] === 'O' || this.board[6] === 'O' && this.board[7] === 'O' && this.board[8] === 'O' || this.board[0] === 'O' && this.board[3] === 'O' && this.board[6] === 'O' || this.board[1] === 'O' && this.board[4] === 'O' && this.board[7] === 'O' || this.board[2] === 'O' && this.board[5] === 'O' && this.board[8] === 'O' || this.board[0] === 'O' && this.board[4] === 'O' && this.board[8] === 'O' || this.board[2] === 'O' && this.board[4] === 'O' && this.board[6] === 'O') {
       return true;
@@ -36,13 +38,11 @@ const game = {
   }
 }
 
-// messages
-
 $(document).ready(function(){
+
+  // custom buttons
+
   $('.messageBox').hide();
-// const winningMessage = `${game.currentPlayer} wins the round!`;
-// const drawMessage = `It's a draw!`;
-// const invalidMove = `Pick another square`;
 
     $('.box').on('click', function(){ // get the contents of a box, checks for click.
       $('.messageBox').removeClass('messageBox-winner');
@@ -50,7 +50,7 @@ $(document).ready(function(){
       if (game.board[id] !=='X' && game.board[id] !== 'O' && game.endOfGame === false) { // checking if board id already has an X or O.
       if (game.checkPlayer()) { //checks who the current player is
         game.board[id] = 'X';
-        $(this).text('X').hide().fadeIn(200);
+        $(this).text(game.player1token).hide().fadeIn(200);
          if (game.winner() === true) { //checks if move is a winner
            game.player1score++;
            $('.player1score').html(`<p>X: ${game.player1score}</p>`);
@@ -73,7 +73,7 @@ $(document).ready(function(){
        } //end of currentPlayer 'X' statement.
        else if (!game.checkPlayer()){
                  game.board[id] = 'O';
-                 $(this).text('O').hide().fadeIn(200);
+                 $(this).text(game.player2token).hide().fadeIn(200);
                  if (game.winner() === true) {
                    game.player2score++;
                    $('.player2score').html(`<p>O: ${game.player2score}</p>`);
@@ -115,49 +115,34 @@ $(document).ready(function(){
     }
   });
 
-  // custom buttons
-
-  $('#icons').on('click', function (){
-    console.log('hello');
-  })
 
 //sound effects
 
-ion.sound({
-    sounds: [
-        {name: "button_click_on"},
-        {name: "button_tiny"},
-        {name: "computer_error"},
-        {name: "door_bump"}
-    ],
+let beep = new Audio ();
+beep.src = "sounds/computer_error.mp3";
 
-    // main config
-    path: "sounds/",
-    preload: true,
-    multiplay: true,
-    volume: 0.9
-});
+// ion.sound({
+//     sounds: [
+//         {name: "button_click_on"},
+//         {name: "button_tiny"},
+//         {name: "computer_error"},
+//         {name: "door_bump"}
+//     ],
+//
+//     // main config
+//     path: "sounds/",
+//     preload: true,
+//     multiplay: true,
+//     volume: 0.9
+// });
 
 // play sound
-ion.sound.play("door_bump");
+
+$('#icons').on('click', function (){
+  ion.sound.play("door_bump");
+})
 
 }); //doc ready end
 
 
-
 //working on
-
-// if (game.winner() === true) { //checks if move is a winner
-//   game.player1score++; //score goes up one
-//   $('.player1score').html(`<p>Player 1: ${game.player1score}</p>`); //score is displayed
-//
-//   //update the display of the boxes //
-//
-//
-//   game.endOfGame = true; // end of the game.
-//   if (game.player1score === 3){
-//     $('.result').html(`X wins the game!`);
-//   } else {
-//     $('.result').html(`X wins the round!`);
-//   }
-// }
